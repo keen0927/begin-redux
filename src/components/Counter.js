@@ -1,21 +1,40 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import './Counter.css';
 
 const Counter = ({
-  number,
-  onIncrement,
-  onDecrement
+    number, color, onIncrement, onDecrement, onSetColor
 }) => {
-  return (
-    <div>
-      <h1>{number}</h1>
-      <button onClick={onIncrement}>증가 (+)</button>
-      <button onClick={onDecrement}>감소 (-)</button>
-    </div>
-  );
+    return (
+        <div
+            className='counter'
+            onClick={onIncrement}
+            onContextMenu={(e) => {
+                e.preventDefault();
+                onDecrement()
+            }}
+            onDoubleClick={onSetColor}
+            style={{backgroundColor: color}}
+        >
+            {number}
+        </div>
+    );
+};
+
+Counter.propTypes = {
+    number: PropTypes.number,
+    color: PropTypes.string,
+    onIncrement: PropTypes.func,
+    onDecrement: PropTypes.func,
+    onSetColor: PropTypes.func
 };
 
 Counter.defaultProps = {
-  number: 0
-}
+    number: 0,
+    color: 'black',
+    onIncrement: () => console.warn('onIncrement no defined'),
+    onDecrement: () => console.warn('onDecrement no defined'),
+    onSetColor: () => console.warn('onSetColor no defined'),
+};
 
 export default Counter;

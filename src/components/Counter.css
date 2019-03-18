@@ -1,0 +1,15 @@
+.counter {
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    color: white;
+    font-size: 3rem;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: background-color 0.7s;
+}
